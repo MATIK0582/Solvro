@@ -1,11 +1,16 @@
-import express from "express"
+import express from 'express'
+import * as dotenv from 'dotenv'
+
+import connectToDatabase from './config/connectToDatabase.js'
 import routes from './routes/index.js'
 
-const app = express()
-const port = 3000
+dotenv.config()
 
+connectToDatabase()
+
+const app = express()
 app.use('/', routes);
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+app.listen(process.env.PORT, () => {
+  console.log(`Example app listening on port ${process.env.PORT}`)
 })

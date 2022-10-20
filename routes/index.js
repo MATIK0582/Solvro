@@ -7,7 +7,7 @@ router.get('/test', async (req, res) => {
 })
 
 router.get('/test_dwa', async (req, res) => {
-    res.send('Hello World v3')
+    res.send('Hello World v4')
 })
 
 export default router
