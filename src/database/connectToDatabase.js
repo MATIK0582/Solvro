@@ -1,4 +1,4 @@
-import config from './database.js'
+import config from '../../config/database.js'
 
 const connectToDatabase = async() => {
     try{
