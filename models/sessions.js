@@ -1,14 +1,14 @@
 import { Sequelize } from "sequelize";
 import database from '../config/database.js'
 
-const sessions = database.define("Session", {
+const Sessions = database.define("Session", {
     sid: {
       type: Sequelize.STRING,
       primaryKey: true,
     },
-    userId: Sequelize.STRING,
+    // userId: Sequelize.STRING,
     expires: Sequelize.DATE,
     data: Sequelize.TEXT,
 });
 
-export default sessions;
+export default Sessions;
