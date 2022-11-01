@@ -1,0 +1,40 @@
+{
+    "discountCodes": [
+        {
+        "id": 1,
+        "name": "STALY5",
+        "value": 5,
+        "type": "amount"
+        },
+        {
+        "id": 2,
+        "name": "STALY10",
+        "value": 10,
+        "type": "amount"
+        },
+        {
+        "id": 3,
+        "name": "STALY15",
+        "value": 15,
+        "type": "amount"
+        },
+        {
+        "id": 4,
+        "name": "PROCENT5",
+        "value": 5,
+        "type": "percentage"
+        },
+        {
+        "id": 5,
+        "name": "PROCENT10",
+        "value": 10,
+        "type": "percentage"
+        },
+        {
+        "id": 6,
+        "name": "PROCENT15",
+        "value": 15,
+        "type": "percentage"
+        }
+    ]
+}

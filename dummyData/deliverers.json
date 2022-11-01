@@ -1,0 +1,24 @@
+{
+    "deliverers": [
+      {
+        "id": 1,
+        "name": "Odbior osobisty",
+        "price": 0.00
+      },
+      {
+        "id": 2,
+        "name": "InPost",
+        "price": 9.99
+      },
+      {
+        "id": 3,
+        "name": "Ups",
+        "price": 11.99
+      },
+      {
+        "id": 4,
+        "name": "Dhl",
+        "price": 13.99
+      }
+    ]
+}

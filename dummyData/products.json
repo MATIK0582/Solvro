@@ -1,0 +1,54 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Woda gazowana",
+      "price": 0.69
+    },
+    {
+      "id": 2,
+      "name": "Sok Jabłkowy",
+      "price": 2.49
+    },
+    {
+      "id": 3,
+      "name": "Mleko",
+      "price": 2.99
+    },
+    {
+      "id": 4,
+      "name": "Ciastka",
+      "price": 4.99
+    },
+    {
+      "id": 5,
+      "name": "Piwo",
+      "price": 3.99
+    },
+    {
+      "id": 6,
+      "name": "Jogurt",
+      "price": 1.99
+    },
+    {
+      "id": 7,
+      "name": "Papier toaletowy",
+      "price": 14.99
+    },
+    {
+      "id": 8,
+      "name": "Mięso mielone",
+      "price": 8.99
+    },
+    {
+      "id": 9,
+      "name": "Sos pomidorowy",
+      "price": 6.99
+    },
+    {
+      "id": 10,
+      "name": "Kabanosy",
+      "price": 5.99
+    }
+  ]
+}

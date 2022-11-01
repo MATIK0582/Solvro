@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import database from '../config/database.js'
+import database from '../../config/database.js'
 
 const DiscountCodes = database.define("DiscountCodes", {
     id: {
@@ -7,7 +7,7 @@ const DiscountCodes = database.define("DiscountCodes", {
         primaryKey: true
     },
     name: Sequelize.TEXT,
-    value: Sequelize.FLOAT,
+    value: Sequelize.INTEGER,
     type: Sequelize.ENUM('amount', 'percentage')
 });
 
