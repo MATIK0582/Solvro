@@ -1,22 +1,26 @@
 import {Router} from "express"
 
-import changeItemQuantity from "../src/components/changeItemQuantity.js"
-import createBasket from "../src/components/createBasket.js"
-import getDiscountInfo from "../src/components/getDiscountInfo.js"
-import getDelivererInfo from "../src/components/getDeliveryInfo.js"
-import removeItem from "../src/components/removeItem.js"
+import changeItemQuantity from "../src/components/basket/changeItemQuantity.js"
+import createBasket from "../src/components/basket/createBasket.js"
+import removeItem from "../src/components/basket/removeItem.js"
+import displayBasketInfo from "../src/components/basket/displayBasketInfo.js"
+
+import copyBasket from "../src/components/database/copyBasket.js"
+import getBasketLink from "../src/components/database/getBasketLink.js"
+import getDiscountInfo from "../src/components/database/getDiscountInfo.js"
+import getDelivererInfo from "../src/components/database/getDeliveryInfo.js"
+import getProductInfo from "../src/components/database/getProductInfo.js"
 
 const router = Router()
 
 router.get('/test', async (req, res) => {
 
-    let basket = req.session.basket
-    basket = {
+    req.session.basket = {
         products: [
-            { productId: 1, productQuantity: 1 },
-            { productId: 2, productQuantity: 2 },
-            { productId: 3, productQuantity: 3 },
-            { productId: 4, productQuantity: 4 }
+            { id: 1, name: 'a', price: 1, quantity: 1 },
+            { id: 2, name: 'b', price: 2, quantity: 2 },
+            { id: 3, name: 'c', price: 3, quantity: 3 },
+            { id: 4, name: 'd', price: 4, quantity: 4 }
         ],
         discountCode: {
             id: '',
@@ -31,20 +35,17 @@ router.get('/test', async (req, res) => {
         }
     }
 
-    req.session.basket = basket
     res.send(req.session.basket)
 })
 
 // 1. Dodawanie przedmiotu do koszyka
+// @FIXME: dodanie tego samego produktu nie sumuje obiektów
 router.post('/basket', async (req, res) => {
 
     const {productId, productQuantity} = req.body
-    let basket = req.session.basket
+    req.session.basket = await createBasket(req.session.basket)
+    req.session.basket.products = [...req.session.basket.products, {...await getProductInfo(productId), "quantity": Number(productQuantity)}]
 
-    basket = await createBasket(basket)
-    basket.products = [...basket.products, { "productId": Number(productId), "productQuantity": Number(productQuantity)}]
-
-    req.session.basket = basket
     res.send(req.session.basket)
 })
 
@@ -52,11 +53,8 @@ router.post('/basket', async (req, res) => {
 router.delete('/basket', async (req, res) => {
 
     const {productId} = req.body
-    let basket = req.session.basket
+    req.session.basket.products = removeItem(req.session.basket.products, productId)
 
-    basket.products = removeItem(basket.products, productId)
-
-    req.session.basket = basket
     res.send(req.session.basket)
 })
 
@@ -64,11 +62,8 @@ router.delete('/basket', async (req, res) => {
 router.put('/basket', async (req, res) => {
 
     const {productId, productQuantity} = req.body
-    let basket = req.session.basket
+    req.session.basket.products = changeItemQuantity(req.session.basket.products, productId, productQuantity)
 
-    basket.products = changeItemQuantity(basket.products, productId, productQuantity)
-
-    req.session.basket = basket
     res.send(req.session.basket)
 })
 
@@ -76,11 +71,8 @@ router.put('/basket', async (req, res) => {
 router.post('/discount', async (req, res) => {
 
     const {discountCode} = req.body
-    let basket = req.session.basket
+    req.session.basket = await getDiscountInfo(req.session.basket, discountCode)
 
-    basket = await getDiscountInfo(basket, discountCode)
-
-    req.session.basket = basket
     res.send(req.session.basket)
 })
 
@@ -92,6 +84,7 @@ router.delete('/discount', async (req, res) => {
         value: '',
         type: ''
     }
+
     res.send(req.session.basket)
 })
 
@@ -99,11 +92,8 @@ router.delete('/discount', async (req, res) => {
 router.post('/delivery', async (req, res) => {
 
     const {delivererId} = req.body
-    let basket = req.session.basket
+    req.session.basket = await getDelivererInfo(req.session.basket, delivererId)
 
-    basket = await getDelivererInfo(basket, delivererId)
-
-    req.session.basket = basket
     res.send(req.session.basket)
 })
 
@@ -114,7 +104,31 @@ router.delete('/delivery', async (req, res) => {
         name: '',
         price: ''
     }
+
     res.send(req.session.basket)
 })
+
+// 6. Wyświetlanie informacji o koszyku
+router.get('/basket', async (req, res) => {
+
+    res.send(displayBasketInfo(req.session.basket))
+})
+
+// 7. Dzielenie się koszykiem
+router.get('/share', async (req, res) => {
+
+    console.log(req.session.basket);
+
+    res.send('?link=' + await getBasketLink(req.session.basket))
+})
+
+router.post('/share', async (req, res) => {
+
+    const {link} = req.query
+    req.session.basket = await copyBasket(link)
+
+    res.send(req.session.basket)
+})
+
 
 export default router

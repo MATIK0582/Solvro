@@ -1,4 +1,4 @@
-import Deliverers from "../../models/data/Deliverers.js";
+import Deliverers from "../../../models/data/Deliverers.js";
 
 const getDelivererInfo = async (array, delivererId) => {
     const delivererInfo = await Deliverers.findOne({

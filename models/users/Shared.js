@@ -4,9 +4,9 @@ import database from '../../config/database.js'
 const Shared = database.define("Shared", {
     id: {
         type: Sequelize.INTEGER,
+        autoIncrement: true,
         primaryKey: true
     },
-    userId: Sequelize.STRING,
     basketObject: Sequelize.JSONB,
     link: Sequelize.STRING
 },

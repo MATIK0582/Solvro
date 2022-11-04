@@ -14,7 +14,7 @@ const insertDummyProducts = async () => {
     if(Object.keys(await Products.findAll()).length === 0){
         data.products.forEach(async (element) => {
             const {id, name, price} = element
-            const products = await Products.create({
+            await Products.create({
                 id: id,
                 name: name,
                 price: Number(price)

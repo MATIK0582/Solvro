@@ -7,8 +7,8 @@ const changeItemQuantity = (array, itemId, itemQuantity) => {
     }
     else if(Number(itemQuantity) >= 0){
         const items = array.filter(item => {
-            if(item.productId === Number(itemId)){
-                item.productQuantity = Number(itemQuantity)
+            if(item.id === Number(itemId)){
+                item.quantity = Number(itemQuantity)
                 return item
             }
             else{

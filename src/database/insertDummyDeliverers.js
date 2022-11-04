@@ -14,7 +14,7 @@ const insertDummyDeliverers = async () => {
     if(Object.keys(await Deliverers.findAll()).length === 0){
         data.deliverers.forEach(async (element) => {
             const {id, name, price} = element
-            const deliverers = await Deliverers.create({
+            await Deliverers.create({
                 id: id,
                 name: name,
                 price: Number(price)

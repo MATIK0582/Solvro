@@ -14,7 +14,7 @@ const insertDummyDiscountCodes = async () => {
     if(Object.keys(await DiscountCodes.findAll()).length === 0){
         data.discountCodes.forEach(async (element) => {
             const {id, name, value, type} = element
-            const codes = await DiscountCodes.create({
+            await DiscountCodes.create({
                 id: id,
                 name: name,
                 value: Number(value),

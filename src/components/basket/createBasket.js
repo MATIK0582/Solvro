@@ -1,5 +1,7 @@
-const createBasket = (params) => {
-    const basket = {   
+import doesBasketExists from "./validation/doesBasketExists.js"
+
+const createBasket = (basket) => {
+    const basketObj = {   
         "products":[],
         "discountCode": {
             "id": '',
@@ -13,12 +15,12 @@ const createBasket = (params) => {
             "price": ''
         }
     }
-
-    if(typeof params === 'undefined' || params === null){
+    
+    if(doesBasketExists(basket)){
         return basket
     }
     else{
-        return params
+        return basketObj
     }
 }
 
