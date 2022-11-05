@@ -1,6 +1,5 @@
 import session from 'express-session'
 import sequelizeStore from 'connect-session-sequelize'
-import * as dotenv from 'dotenv'
 
 import database from './database.js'
 

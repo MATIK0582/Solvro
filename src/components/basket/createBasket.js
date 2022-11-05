@@ -1,25 +1,21 @@
-import doesBasketExists from "./validation/doesBasketExists.js"
+import doesObjectExists from './validation/doesObjectExists.js'
 
 const createBasket = (basket) => {
-    const basketObj = {   
-        "products":[],
-        "discountCode": {
-            "id": '',
-            "name": '',
-            "value": '',
-            "type": ''
-        },
-        "delivery": {
-            "id": '',
-            "name": '',
-            "price": ''
-        }
-    }
     
-    if(doesBasketExists(basket)){
+    if(doesObjectExists(basket)){
         return basket
     }
     else{
+        const basketObj = {   
+            "products":[],
+            "discountCode": {
+                "name": '',
+            },
+            "delivery": {
+                "id": '',
+            }
+        }
+        
         return basketObj
     }
 }

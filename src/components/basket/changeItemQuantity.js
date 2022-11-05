@@ -6,21 +6,13 @@ const changeItemQuantity = (array, itemId, itemQuantity) => {
         return removeItem(array, itemId)
     }
     else if(Number(itemQuantity) >= 0){
-        const items = array.filter(item => {
-            if(item.id === Number(itemId)){
-                item.quantity = Number(itemQuantity)
-                return item
-            }
-            else{
-                return item
-            }
-        })
 
-        return items
+        array[array.findIndex(item => item.id === Number(itemId))].quantity = Number(itemQuantity)
+        return array
     }
     else{
         // @TODO: rozszerzyć komunikaty błędów
-        console.log("Coś się popsuło");
+        console.log("Coś się popsuło")
         return array
     }
 }

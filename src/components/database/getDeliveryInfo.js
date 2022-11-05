@@ -1,6 +1,6 @@
-import Deliverers from "../../../models/data/Deliverers.js";
+import Deliverers from '../../../models/Deliverers.js'
 
-const getDelivererInfo = async (array, delivererId) => {
+const getDelivererInfo = async (delivererId) => {
     const delivererInfo = await Deliverers.findOne({
         where: {
            id: delivererId
@@ -8,11 +8,8 @@ const getDelivererInfo = async (array, delivererId) => {
     })
 
     if(delivererId !== null){
-        const {id, name, price} = delivererInfo.dataValues
-        array.delivery = {id, name, price}
+        return delivererInfo.dataValues
     }
-
-    return array
 }
 
 export default getDelivererInfo 

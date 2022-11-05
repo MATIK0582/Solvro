@@ -1,6 +1,6 @@
-import DiscountCodes from "../../../models/data/DiscountCodes.js";
+import DiscountCodes from "../../../models/DiscountCodes.js";
 
-const getDiscountInfo = async (array, discountCode) => {
+const getDiscountInfo = async (discountCode) => {
     const discountInfo = await DiscountCodes.findOne({
         where: {
             name: discountCode
@@ -8,11 +8,8 @@ const getDiscountInfo = async (array, discountCode) => {
     })
 
     if(discountInfo !== null){
-        const {id, name, value, type} = discountInfo.dataValues
-        array.discountCode = {id, name, value, type}
+        return discountInfo.dataValues
     }
-
-    return array
 }
 
 export default getDiscountInfo

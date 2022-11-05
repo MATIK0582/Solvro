@@ -1,18 +1,19 @@
+import addDelivery from "./adds/addDelivery.js"
+import addDiscount from "./adds/addDiscount.js"
 import calculateProductsValue from "./calculateProductsValue.js"
-import addDiscount from "./addDiscount.js";
-import doesBasketExists from "./validation/doesBasketExists.js";
+import doesObjectExists from "./validation/doesObjectExists.js"
 
-const displayBasketInfo = (basket) => {
+const displayBasketInfo = async (basket) => {
 
-    if(doesBasketExists(basket)){
+    if(doesObjectExists(basket)){
 
-        const productsPrice = calculateProductsValue(basket.products)
-        const price = addDiscount(basket.discountCode, productsPrice)
+        const productsPrice = await calculateProductsValue(basket.products)
+        const price = await addDiscount(basket.discountCode, productsPrice)
         
         let basketInfo = {...basket, "productPrice": productsPrice, "priceAfterDiscount": price}
 
         if(Number.isInteger(basket.delivery.id)){
-            basketInfo = {...basketInfo, "priceWithDeliveryCost": parseFloat((price + basket.delivery.price).toFixed(2))}
+            basketInfo = {...basketInfo, ...await addDelivery(basket.delivery.id, price)}
         }
 
         return basketInfo

@@ -1,17 +1,19 @@
-const calculateProductsValue = (products) => {
+import getProductInfo from '../database/getProductInfo.js'
+
+const calculateProductsValue = async (products) => {
     let productsPrice = 0
 
     if(products.length == 0){
         return productsPrice
     }
     else{
-        products.forEach(element => {
-            productsPrice += (element.price * element.quantity)
-        });
-
+        for (const product of products){
+            
+            const productData = await getProductInfo(product.id)
+            productsPrice += (productData.price * product.quantity)
+        }
         return parseFloat((productsPrice).toFixed(2));
     }
-
 }
 
 export default calculateProductsValue

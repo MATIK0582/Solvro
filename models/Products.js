@@ -1,5 +1,5 @@
 import { Sequelize } from "sequelize";
-import database from '../../config/database.js'
+import database from '../config/database.js'
 
 const Products = database.define("Products", {
     id: {
