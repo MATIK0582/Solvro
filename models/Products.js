@@ -1,4 +1,4 @@
-import { Sequelize } from "sequelize";
+import { Sequelize } from 'sequelize';
 import database from '../config/database.js'
 
 const Products = database.define("Products", {

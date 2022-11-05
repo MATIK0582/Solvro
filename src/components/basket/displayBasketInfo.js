@@ -1,7 +1,7 @@
-import addDelivery from "./adds/addDelivery.js"
-import addDiscount from "./adds/addDiscount.js"
-import calculateProductsValue from "./calculateProductsValue.js"
-import doesObjectExists from "./validation/doesObjectExists.js"
+import addDelivery from './adds/addDelivery.js'
+import addDiscount from './adds/addDiscount.js'
+import calculateProductsValue from './calculateProductsValue.js'
+import doesObjectExists from './validation/doesObjectExists.js'
 
 const displayBasketInfo = async (basket) => {
 

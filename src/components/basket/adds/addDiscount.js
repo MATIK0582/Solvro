@@ -1,5 +1,5 @@
-import getDiscountInfo from "../../database/getDiscountInfo.js"
-import doesObjectExists from "../validation/doesObjectExists.js"
+import getDiscountInfo from '../../database/getDiscountInfo.js'
+import doesObjectExists from '../validation/doesObjectExists.js'
 
 const addDiscount = async (discount, price) => {
 

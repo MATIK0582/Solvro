@@ -1,4 +1,4 @@
-import DiscountCodes from "../../../models/DiscountCodes.js";
+import DiscountCodes from '../../../models/DiscountCodes.js';
 
 const getDiscountInfo = async (discountCode) => {
     const discountInfo = await DiscountCodes.findOne({
