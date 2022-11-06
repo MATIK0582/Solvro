@@ -62,6 +62,10 @@ router.delete('/basket', async (req, res) => {
 router.put('/basket', async (req, res) => {
 
     const {productId, productQuantity} = req.body
+    if(!doesObjectExists(req.session.basket)){
+        req.session.basket = createBasket(req.session.basket)
+    }
+
     req.session.basket.products = changeItemQuantity(req.session.basket.products, productId, productQuantity)
 
     res.send(req.session.basket)
