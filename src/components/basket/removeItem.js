@@ -1,12 +1,18 @@
+import doesObjectExists from './validation/doesObjectExists.js'
+import createBasket from './createBasket.js'
+
 const removeItem = (array, itemId) => {
-    
-    // @TODO: przypadek w którym nie ma takiego obiektu
 
-    const items = array.filter(item => {
-        return item.id !== Number(itemId)
-    })
+    if(doesObjectExists(array)){
 
-    return items
+        const items = array.filter(item => {
+            return item.id !== Number(itemId)
+        })
+
+        return items
+    }
+
+    return array
 }
 
 export default removeItem

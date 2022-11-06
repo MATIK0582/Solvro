@@ -1,15 +1,20 @@
 import Deliverers from '../../../models/Deliverers.js'
+import checkIfInt from '../basket/validation/checkIfInt.js'
 
 const getDelivererInfo = async (delivererId) => {
-    const delivererInfo = await Deliverers.findOne({
+    if(checkIfInt(delivererId)){
+        const delivererInfo = await Deliverers.findOne({
         where: {
            id: delivererId
         }
     })
 
-    if(delivererId !== null){
-        return delivererInfo.dataValues
+        if(delivererInfo !== null){
+            return delivererInfo.dataValues
+        }
     }
+
+    return {id: ''}
 }
 
 export default getDelivererInfo 

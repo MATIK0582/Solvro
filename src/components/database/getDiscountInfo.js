@@ -10,6 +10,8 @@ const getDiscountInfo = async (discountCode) => {
     if(discountInfo !== null){
         return discountInfo.dataValues
     }
+
+    return {name: ''}
 }
 
 export default getDiscountInfo
