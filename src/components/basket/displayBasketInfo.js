@@ -32,9 +32,8 @@ const displayBasketInfo = async (basket) => {
 
         return basketInfo
     }
-    else{
-        return "Nie masz jeszcze nic w koszyku"
-    }
+
+    return "Nie masz jeszcze nic w koszyku"
 }
 
 export default displayBasketInfo

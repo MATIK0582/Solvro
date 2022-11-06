@@ -11,6 +11,7 @@ const getDiscountInfo = async (discountCode) => {
         return discountInfo.dataValues
     }
 
+    console.log("Niepoprawny kod rabatowy");
     return {name: ''}
 }
 

@@ -14,6 +14,7 @@ const changeItemQuantity = (array, itemId, itemQuantity) => {
                 return array
             }
         }
+        console.log("Niepoprawne dane produktu")
     }
 
     return array

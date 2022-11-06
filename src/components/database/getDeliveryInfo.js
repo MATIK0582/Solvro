@@ -14,6 +14,7 @@ const getDelivererInfo = async (delivererId) => {
         }
     }
 
+    console.log("Niepoprawne dane dostawcy")
     return {id: ''}
 }
 

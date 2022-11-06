@@ -22,6 +22,7 @@ const addProduct = async (array, itemId, itemQuantity) => {
                 }
             }
         }
+        console.log("Niepoprawne dane produktu")
     }
 
     return array

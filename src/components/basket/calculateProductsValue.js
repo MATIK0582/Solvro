@@ -4,6 +4,7 @@ const calculateProductsValue = async (products) => {
     let productsPrice = 0
 
     if(products.length == 0){
+        console.log("Brak produktów w koszyku")
         return productsPrice
     }
     else{
