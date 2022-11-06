@@ -1,5 +1,4 @@
 import doesObjectExists from './validation/doesObjectExists.js'
-import createBasket from './createBasket.js'
 
 const removeItem = (array, itemId) => {
 

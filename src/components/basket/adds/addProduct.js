@@ -16,10 +16,9 @@ const addProduct = async (array, itemId, itemQuantity) => {
                 if(doesObjectExists(await getProductInfo(itemId))){
                     return [...array, {"id": Number(itemId), "quantity": Number(itemQuantity)}]
                 }
-                else{
-                    console.log("Nie ma tekiego produktu")
-                    return array
-                }
+                
+                console.log("Nie ma tekiego produktu")
+                return array
             }
         }
         console.log("Niepoprawne dane produktu")

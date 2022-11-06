@@ -4,7 +4,6 @@ import changeItemQuantity from '../src/components/basket/changeItemQuantity.js'
 import copyBasket from '../src/components/basket/copyBasket.js'
 import createBasket from '../src/components/basket/createBasket.js'
 import displayBasketInfo from '../src/components/basket/displayBasketInfo.js'
-import doesObjectExists from '../src/components/basket/validation/doesObjectExists.js'
 import getBasketLink from '../src/components/basket/getBasketLink.js'
 import removeItem from '../src/components/basket/removeItem.js'
 
@@ -49,10 +48,8 @@ router.post('/basket', async (req, res) => {
 router.delete('/basket', async (req, res) => {
 
     const {productId} = req.body
-    if(!doesObjectExists(req.session.basket)){
-        req.session.basket = createBasket(req.session.basket)
-    }
 
+    req.session.basket = await createBasket(req.session.basket)
     req.session.basket.products = removeItem(req.session.basket.products, productId)
 
     res.send(req.session.basket)
@@ -62,10 +59,8 @@ router.delete('/basket', async (req, res) => {
 router.put('/basket', async (req, res) => {
 
     const {productId, productQuantity} = req.body
-    if(!doesObjectExists(req.session.basket)){
-        req.session.basket = createBasket(req.session.basket)
-    }
 
+    req.session.basket = await createBasket(req.session.basket)
     req.session.basket.products = changeItemQuantity(req.session.basket.products, productId, productQuantity)
 
     res.send(req.session.basket)
