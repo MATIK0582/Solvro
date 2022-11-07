@@ -1,5 +1,5 @@
 # Solvro
-Zadanie projektowe wykonane w ramach rekrutacji do Koła naukowego Solvro
+Zadanie projektowe wykonane w ramach rekrutacji do Koła naukowego Solvro.
 
 ## Treść zadania
 >Zaprojektuj i napisz kod API koszyka internetowego.
@@ -32,17 +32,54 @@ Zadanie projektowe wykonane w ramach rekrutacji do Koła naukowego Solvro
 ```
 
 ## Baza danych
-Projekt jako bazy danych używa `Postgresql` w wersji: 15 <br>
-Do poprawnego funkcjonowania aplikacji potrzebne jest stworzenie tabeli `Solvro`
+Projekt jako bazy danych używa `Postgresql` w wersji: 15. <br>
+Do poprawnego funkcjonowania aplikacji potrzebne jest stworzenie tabeli `Solvro`.
 ```
   CREATE DATABASE Solvro;
 ```
-Dodatkowo w pliku `.env` trzeba podmienić hasło na to ustawione podczas instalacji
+Dodatkowo w pliku `.env` trzeba podmienić hasło na to ustawione podczas instalacji.
 ```
   DATABASE_PASSWORD = "twoje_hasło"
 ```
-Program zakłada domyślną nazwę użytkownika - `postgres`. Jeżeli podczas konfiguracji bazy danych ustawiłeś inną nazwę musisz ją zmienić w pliku `\config\database.js`
+Program zakłada domyślną nazwę użytkownika - `postgres`. Jeżeli podczas konfiguracji bazy danych ustawiłeś inną nazwę musisz ją zmienić w pliku [/config/database.js](./config/database.js).
 ```
   const config = new Sequelize('Solvro', 'postgres', process.env.DATABASE_PASSWORD, {
 ```
+
+## Endpointy
+```
+GET     /basket
+POST    /basket
+PUT     /basket
+DELETE  /basket
+POST    /discount
+DELETE  /discount
+POST    /delivery
+DELETE  /delivery
+GET     /share
+POST    /share
+```
+
+## Uruchamianie
+-`npm start` Uruchomienie aplikacji <br>
+-`npm run dev` Uruchomienie nodemon'a
+
+## Użytkowanie
+Z użyciem narzędzia typu Postman lub Swagger wysyłamy pakiety na wystawione przez aplikacje endpoint'y. <br>
+W zależności od wybranej akcji dany pakiet będzie potrzebował odpowiednio dodatkowych parametrów.
+
+- Basket <br>
+![Basket](./images/Basket.png)
+
+- Delivery <br>
+![Delivery](./images/Delivery.png)
+
+- Discount <br>
+![Discount](./images/Discount.png)
+
+- Share <br>
+![Share](./images/Share.png)
+
+#### Przyjemnego sprawdzania ;)
+
 
